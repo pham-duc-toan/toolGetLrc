@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remove Word from Text</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .code-container {
+            position: relative;
+            background-color: #f4f4f4;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        .code-container pre {
+            margin: 0;
+        }
+        .code-container code {
+            font-family: monospace;
+            display: block;
+            white-space: pre-wrap;
+        }
+        .copy-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 5px 10px;
+            font-size: 14px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+        }
+        .copy-button:hover {
+            background-color: #0056b3;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        textarea {
+            width: 100%;
+            height: 150px;
+        }
+        .result {
+            margin-top: 20px;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <h1>JavaScript Code</h1>
+    <div class="code-container">
+        <button class="copy-button" id="copyButton">Copy Code</button>
+        <pre><code id="codeBlock">
+const listLoi = document.querySelector(".scroll-content");
+if (listLoi) {
+  var preContent = undefined;
+  var timeItem = document.querySelector(".time.left");
+  setInterval(() => {
+    var contentItem = listLoi.querySelector(".item.is-active");
+    if (contentItem != preContent) {
+      time = document.querySelector(".time.left");
+      console.log(\`[\${timeItem.textContent}.00] \${contentItem.textContent}\`);
+      preContent = contentItem;
+    }
+  }, 100);
+}
+        </code></pre>
+    </div>
+<h1>DELETE STRING</h1>
+    <form id="textForm">
+        <div>
+            <label for="textInput">Enter Text:</label><br>
+            <textarea id="textInput" name="textInput" required></textarea>
+        </div>
+        <div>
+            <label for="wordToRemove">Word to Remove:</label><br>
+            <input type="text" id="wordToRemove" name="wordToRemove" required>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+    <div class="result" id="result"></div>
+
+    <script>
+        document.getElementById('textForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const text = document.getElementById('textInput').value;
+            const wordToRemove = document.getElementById('wordToRemove').value;
+
+            // Tạo một biểu thức chính quy để tìm và xóa từ cần xóa
+            const regex = new RegExp(wordToRemove, 'g');
+            const newText = text.replace(regex, '');
+
+            // Hiển thị kết quả
+            document.getElementById('result').textContent = newText;
+        });
+        document.getElementById('copyButton').addEventListener('click', function() {
+            // Tạo một textarea ẩn để sao chép nội dung
+            const textarea = document.createElement('textarea');
+            textarea.value = document.getElementById('codeBlock').textContent.trim();
+            document.body.appendChild(textarea);
+
+            // Chọn và sao chép nội dung
+            textarea.select();
+            textarea.setSelectionRange(0, 99999); // Dành cho thiết bị di động
+            document.execCommand('copy');
+
+            // Xóa textarea ẩn
+            document.body.removeChild(textarea);
+
+            // Hiển thị thông báo (tùy chọn)
+            alert('Code copied to clipboard');
+        });
+    </script>
+</body>
+</html>
