@@ -59,19 +59,20 @@
     <div class="code-container">
         <button class="copy-button" id="copyButton">Copy Code</button>
         <pre><code id="codeBlock">
-const listLoi = document.querySelector(".scroll-content");
-if (listLoi) {
-  var preContent = undefined;
-  var timeItem = document.querySelector(".time.left");
-  setInterval(() => {
-    var contentItem = listLoi.querySelector(".item.is-active");
-    if (contentItem != preContent) {
-      time = document.querySelector(".time.left");
-      console.log(\`[\${timeItem.textContent}.00] \${contentItem.textContent}\`);
-      preContent = contentItem;
-    }
-  }, 100);
-}
+            const listLoi = document.querySelector(".scroll-content");
+            if (listLoi) {
+              var preContent = undefined;
+              var timeItem = document.querySelector(".time.left");
+              setInterval(() => {
+                var contentItem = listLoi.querySelector(".item.is-active");
+                if (contentItem != preContent) {
+                  time = document.querySelector(".time.left");
+                  console.log(`[${timeItem.textContent}.00] ${contentItem.textContent}`);
+                  preContent = contentItem;
+                }
+              }, 100);
+            }
+            
         </code></pre>
     </div>
 <h1>DELETE STRING</h1>
